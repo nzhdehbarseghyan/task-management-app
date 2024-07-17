@@ -13,10 +13,14 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     const user = new User();
-    user.username = createUserDto.username
-    user.password = createUserDto.password
-    user.email = createUserDto.email
+    user.username = createUserDto.username;
+    user.password = createUserDto.password;
+    user.email = createUserDto.email;
 
-    return await this.userRepository.save(user)
+    return await this.userRepository.save(user);
+  }
+
+  async getAll(): Promise<User[]> {
+    return await this.userRepository.find();
   }
 }
